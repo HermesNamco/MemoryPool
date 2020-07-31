@@ -27,6 +27,11 @@ int main(int argc, char *argv[])
     cout << "data2:" << data2 << endl;
     cout << "data3:" << data3 << endl;
     MemoryPool::getInstance().getInfo();
+    uint ret = MemoryPool::getInstance().dealloc(data3,sizeof(data3));
+    if(ret != 0)
+        cout << "dealloc error" << endl;
+    else
+        MemoryPool::getInstance().getInfo();
 
     return a.exec();
 }

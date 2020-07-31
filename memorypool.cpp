@@ -99,8 +99,8 @@ void* MemoryPool::alloc(size_t size){
 
 }
 
-int MemoryPool::dealloc(void* p, const uint block_size){
-
+int MemoryPool::dealloc(void* p, uint block_size){
+    block_size = getFitSize(block_size);
     auto it_block = free_block_map.find(block_size);
     if(it_block == free_block_map.end())
         return -1;
